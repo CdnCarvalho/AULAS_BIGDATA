@@ -1,0 +1,128 @@
+INSERT INTO minha_tabela (coluna1, coluna2, coluna3) VALUES
+('Arroz (5 kg)', '25,00', 120),
+('Feijão (1 kg)', '10,00', 80),
+('Macarrão (500 g)', '5,00', 150),
+('Óleo de soja (900 ml)', '7,50', 70),
+('Açúcar (1 kg)', '4,00', 100),
+('Sal (1 kg)', '2,00', 200),
+('Café (500 g)', '12,00', 60),
+('Leite (1 L)', '4,50', 90),
+('Pão (400 g)', '3,00', 140),
+('Manteiga (200 g)', '6,00', 50),
+('Queijo (1 kg)', '35,00', 30),
+('Presunto (200 g)', '9,00', 40),
+('Frango (1 kg)', '15,00', 110),
+('Batata (1 kg)', '3,50', 130),
+('Cebola (1 kg)', '2,50', 150),
+('Tomate (1 kg)', '6,00', 95),
+('Pepino (1 kg)', '4,50', 80),
+('Alface (1 unidade)', '3,00', 75),
+('Maçã (1 kg)', '5,50', 110),
+('Banana (1 kg)', '4,00', 100),
+('Laranja (1 kg)', '3,20', 85),
+('Melancia (1 unidade)', '12,00', 40),
+('Sardinha (1 kg)', '20,00', 30),
+('Linguiça (1 kg)', '22,00', 25),
+('Biscoito recheado (400 g)', '5,00', 200),
+('Chocolate (100 g)', '4,50', 150),
+('Detergente (500 ml)', '3,00', 130),
+('Sabão em pó (1 kg)', '8,00', 60),
+('Shampoo (400 ml)', '15,00', 45),
+('Condicionador (400 ml)', '14,00', 50),
+('Desodorante (100 ml)', '10,00', 70);
+CREATE TABLE minha_tabela (     id INT AUTO_INCREMENT PRIMARY KEY,     coluna1 VARCHAR(255),     coluna2 VARCHAR(255),     coluna3 INT );
+
+UPDATE minha_tabela
+SET coluna2 = '13,00', coluna3 = 75
+WHERE coluna1 = 'Café (500 g)';
+
+DELETE FROM minha_tabela
+WHERE coluna1 = 'Linguiça (1 kg)';
+
+/* ADICIONAR UMA COLUNA COM ID P/ SER A CHAVE PRIMÁRIA */
+ALTER TABLE minha_tabela ADD COLUMN id INT NOT NULL AUTO_INCREMENT;
+ALTER TABLE minha_tabela MODIFY id INT NOT NULL AUTO_INCREMENT;
+
+SET @contador = 0;
+UPDATE minha_tabela
+SET id = (@contador := @contador + 1);
+
+ALTER TABLE minha_tabela ADD PRIMARY KEY (id);
+--------------------------------------------------------------
+
+
+
+ALTER TABLE basedp_roubo_celular 
+CHANGE COLUMN cod_ocorrencia cod INT;
+
+ALTER TABLE basedp 
+MODIFY COLUMN cod INT AUTO_INCREMENT PRIMARY KEY;
+
+ALTER TABLE basedp_roubo_celular 
+MODIFY COLUMN cod INT AUTO_INCREMENT PRIMARY KEY;
+
+ALTER TABLE basedp_roubo_celular 
+ADD CONSTRAINT fk_basedp
+FOREIGN KEY (cod) REFERENCES basedp(cod)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+-------------------------------------------------------------
+
+/* 
+SELECT * FROM Vendas;
+
+SELECT Produtos, QuantidadeVendida
+FROM Vendas;
+
+SELECT Produto, Categoria
+FROM Vendas
+WHERE DataVenda > "2024-05-01";
+
+SELECT Produto, Valor
+FROM Vendas
+WHERE Valor > 100;
+
+SELECT Produto, Loja
+FROM Vendas 
+WHERE QuantidadeVendida > 20;
+
+SELECT Produto, Valor, DataVenda
+FROM Vendas 
+WHERE DataVenda >= '2024-07-01' AND DataVenda <= '2024-09-30';
+*/
+
+SELECT Produto, Categoria, DataVenda
+FROM Vendas
+WHERE DataVenda < "2024-05-01" and Categoria = "Móveis";
+
+
+
+SELECT 
+    basedp.mes_ano AS Mes_Ano,
+    basedp.cod AS Codigo_BPM,
+    basedp.aisp AS Nome_BPM,
+    SUM(basedp_roubo_celular.roubo_celular) AS Total_Roubo_Celular
+FROM 
+    basedp
+INNER JOIN 
+    basedp_roubo_celular
+ON 
+    basedp.cod = basedp_roubo_celular.cod
+GROUP BY 
+    basedp.mes_ano, basedp.cod, basedp.aisp
+ORDER BY
+    Nome_BPM
+LIMIT 50000;
+
+-------------------------------------------------------------------------------
+
+
+
+ALTER TABLE tb_vendas
+ADD CONSTRAINT fk_vendas_produtos
+FOREIGN KEY (codigo_produto) REFERENCES tb_produtos(codigo_produto);
+
+ALTER TABLE tb_vendas
+ADD CONSTRAINT fk_vendas_clientes
+FOREIGN KEY (id_cliente) REFERENCES tb_clientes(id_cliente);

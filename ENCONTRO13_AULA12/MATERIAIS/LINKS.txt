@@ -1,0 +1,28 @@
+Bolsa família
+https://portaldatransparencia.gov.br/download-de-dados/novo-bolsa-familia
+
+Thicode VsCode
+https://www.youtube.com/watch?v=HIqyLRKv-YE&ab_channel=ThiCode
+
+Ambiente Virtual
+https://virtualenv.pypa.io/en/latest/index.html
+
+Numpy
+Numpy.org
+
+Pandas
+https://pandas.pydata.org/
+
+Polars
+https://pola.rs/
+
+Portal da Transparência
+https://portaldatransparencia.gov.br/download-de-dados/novo-bolsa-familia
+
+Parquet
+*.parquet 
+https://parquet.apache.org/docs/overview/
+
+
+
+

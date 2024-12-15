@@ -1,0 +1,148 @@
+/*
+SELECT * FROM bd_biblioteca.tb_emprestimo;
+
+--- ------Chave Primária - Biblioteca
+
+ALTER TABLE tb_generos
+MODIFY COLUMN id_genero INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_genero);
+
+ALTER TABLE tb_livros
+MODIFY COLUMN id_livro INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_livro);
+
+ALTER TABLE tb_usuarios
+MODIFY COLUMN id_usuario INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_usuario);
+
+ALTER TABLE tb_emprestimos
+MODIFY COLUMN id_emprestimo INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_emprestimo);
+
+
+
+----- --------------------- Chaves Estrangeiras - Biblioteca
+
+ALTER TABLE tb_emprestimos
+ADD CONSTRAINT fk_usuario
+FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario);
+
+ALTER TABLE tb_livros
+ADD CONSTRAINT fk_genero
+FOREIGN KEY (id_genero) REFERENCES tb_generos(id_genero);
+
+ALTER TABLE tb_emprestimos
+ADD CONSTRAINT fk_livro
+FOREIGN KEY (id_livro) REFERENCES tb_livros(id_livro);
+
+
+--- ------------------- Em caso de erros nos valores da tabela. Ex: se existir algum valor, sendo definido como chave estrangeira, sendo que, este mesmo valor não existindo como chave primária da outra tabela, a definição da chave -- estrangeira não será efetuada, retornando um erro. Você pode usar esta consulta abaixo. Ela irá retornar todos os valores que existem na tabela das possíveis chaves estrangeira, mas não existem nas chaves primárias da outra tabela. 
+SELECT id_livro 
+FROM tb_emprestimos 
+WHERE id_livro NOT IN (SELECT id_livro FROM tb_livros);
+
+----------------------------- Consulta usando apelido das tablas, por conta das ambiguidades do campo id.livro, que existe nas duas tabelas com o mesmo nome
+SELECT 
+    e.id_emprestimo,
+    e.data_emprestimo,
+    l.titulo,
+    e.id_usuario
+FROM 
+    tb_emprestimos e
+INNER JOIN 
+    tb_livros l ON e.id_livro = l.id_livro;
+
+-- --------------------- ------------Fim biblioteca
+
+
+-- Exemplo2
+-------------------------------- Inpício LojaX (bd_exemplo02)
+
+-- Chave Primária - LojaX
+
+ALTER TABLE `bd_lojasx`.`tb_pedidos` 
+CHANGE COLUMN `codigo_pedido` `codigo_pedido` INT NOT NULL AUTO_INCREMENT ,
+ADD PRIMARY KEY (`codigo_pedido`);
+;
+
+-- --------------------------------------------
+-- Chave Estrnageira - LojaX
+
+estrangeira exemplo 2
+ALTER TABLE tb_pedidos
+ADD CONSTRAINT fk_pedidos
+FOREIGN KEY (cliente_codigo) REFERENCES tb_clientes(codigo_cliente);
+
+
+ALTER TABLE tb_itens
+ADD CONSTRAINT fk_itens
+FOREIGN KEY (item_codigo) REFERENCES tb_produtos(codigo_produto);
+
+ALTER TABLE tb_itens
+ADD CONSTRAINT fk_pedidos
+FOREIGN KEY (pedido_codigo) REFERENCES tb_pedidos(codigo_pedido);
+
+
+
+-- ----------------------------------------------------------------------------------------------------------------
+-- Apagar uma chave (seja qual for o motivo. Pode ser até para dar um outro nome a fk -----------------------------
+-- A primeira foreign key estava com o nome de fk_pedidos. Deletamos ela e criamos uma nova fk_clientes.
+
+ALTER TABLE tb_pedidos
+DROP FOREIGN KEY fk_pedidos;
+
+ALTER TABLE tb_pedidos
+ADD CONSTRAINT fk_clientes
+FOREIGN KEY (cliente_codigo) REFERENCES tb_clientes(codigo_cliente);
+-- -------------------------------------------------------------
+
+
+-- Queris para as consultas
+SELECT *
+FROM tb_pedidos
+WHERE valor > 50.00;
+
+
+SELECT *
+FROM tb_pedidos
+WHERE valor > 60 AND data_pedido < '2024-01-01';
+
+
+---------------------- Consultas: INNER JOIN ON -- Lojas
+--- INNER JOIN serve para retornar dados de duas tabelas com base em atributos em comum
+
+SELECT *
+FROM tb_pedidos INNER JOIN tb_clientes ON cliente_codigo = codigo_cliente;
+
+SELECT *
+FROM tb_pedidos INNER JOIN tb_clientes ON tb_pedidos.cliente_codigo = tb_clientes.codigo_cliente
+
+
+SELECT nome, CPF, email, telefone, codigo_pedido
+FROM tb_pedidos INNER JOIN tb_clientes ON cliente_codigo = codigo_cliente
+WHERE codigo_pedido = 17
+
+
+SELECT pedido_codigo, nome, email, quantidade, subtotal, item_codigo
+FROM tb_itens 
+INNER JOIN (tb_pedidos INNER JOIN tb_clientes ON cliente_codigo = codigo_cliente) ON pedido_codigo = codigo_pedido
+WHERE codigo_cliente = 2;
+
+*/
+
+SELECT 
+    tb_pedidos.codigo_pedido, 
+    tb_clientes.nome, 
+    tb_clientes.email, 
+    tb_itens.quantidade, 
+    tb_itens.subtotal, 
+    tb_itens.item_codigo,
+    produto
+FROM 
+    (tb_itens 
+    INNER JOIN tb_pedidos ON tb_itens.pedido_codigo = tb_pedidos.codigo_pedido)
+    INNER JOIN tb_clientes ON tb_pedidos.cliente_codigo = tb_clientes.codigo_cliente
+    INNER JOIN tb_produtos ON tb_itens.item_codigo = tb_produtos.codigo_produto
+WHERE 
+    tb_clientes.codigo_cliente = 2;
+    

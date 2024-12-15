@@ -1,0 +1,23 @@
+CREATE DATABASE meu_banco_de_dados;
+
+USE meu_banco_de_dados;
+
+CREATE TABLE minha_tabela (
+	id INT AUTO_INCREMENT PRIMARY KEY,     
+	coluna1 VARCHAR(255),     
+	coluna2 VARCHAR(255),     
+	coluna3 INT 
+);
+
+SHOW VARIABLES LIKE 'secure_file_priv';
+
+SET GLOBAL local_infile=1;
+
+LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\base4.csv' 
+INTO TABLE minha_tabela 
+FIELDS TERMINATED BY ';' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 ROWS
+(coluna1, coluna2, coluna3); 
+
+SELECT * FROM minha_tabela; 

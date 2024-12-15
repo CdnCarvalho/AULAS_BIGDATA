@@ -1,0 +1,1 @@
+f_estoque.to_csv('estoque_exportado.csv', sep=';', index=False, encoding='utf-8-sig')

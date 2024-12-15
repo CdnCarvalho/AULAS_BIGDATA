@@ -1,0 +1,18 @@
+Correlação de Pearson: 
+Vai calcular a correlação entre 2 variáveis quantitativas, sob o ponto de vista de uma variável qualitativa
+
+r (-1 a 1)
+
+r = 1 - Correlação é positiva, ou seja, as variáveis quantitativas se correlacionam diretamente. Quando 1 aumenta, a outra tende a aumentar. Qdo 1 diminiu, a outra tende a diminuir
+
+r = -1 - Correlação é negativa, ou seja, as variáveis quantitativas se correlacionam inversamente, Quando 1 aumenta, a outra tende a diminuir. Qdo 1 diminiu, a outra tende a aumentar
+
+r = 0 - Não há correlação
+
+---------------------------
+Guideline: Foi proposto por Rumsey (2023)
+r = 1 (Correlação Perfeita)
+r >= 0.7 (Correlação forte)
+r >= 0.3 (Correlação moderada)
+r < 0.3 (Correlação fraca)
+r = 0 (Não há correlção)
