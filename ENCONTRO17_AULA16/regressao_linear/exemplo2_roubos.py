@@ -1,12 +1,12 @@
-# import pandas as pd
-import sys
-import os
+import pandas as pd
+# import sys
+# import os
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-sys.path.append(os.path.abspath('../'))
+# sys.path.append(os.path.abspath('../'))
 from auxiliar.conexoes import obter_dados_pd
+
 
 # Constante do Endereço dos dados
 ENDERECO_DADOS = 'https://www.ispdados.rj.gov.br/Arquivos/BaseDPEvolucaoMensalCisp.csv'
@@ -16,7 +16,8 @@ try:
     print('Obtendo dados de ocorrências...')
 
     # parâmentros: endereco_arquivo, nome_arquivo, tipo_arquivo, separador
-    df_ocorrencias = obter_dados_pd(ENDERECO_DADOS, '', 'csv', ';')
+    # df_ocorrencias = obter_dados_pd(ENDERECO_DADOS, '', 'csv', ';')
+    df_ocorrencias = pd.read_csv(ENDERECO_DADOS, sep=';', encoding='iso-8859-1')
 
     #print(df_ocorrencias.head()) #head sem valor, trará as 5 primeiras linhas
 
@@ -30,7 +31,7 @@ except ImportError as e:
 try:
     print("inciando a delimitação das variáveis e a totalização...")
     
-    #print(df_ocorrencias.columns) # exibir o nome de todas as colunas
+    # print(df_ocorrencias.columns) # exibir o nome de todas as colunas
     df_veiculos = df_ocorrencias[['cisp', 'roubo_veiculo', 'recuperacao_veiculos']]
 
     # totalizar o dataframe
@@ -69,19 +70,22 @@ try:
     print("Iniciando a regressão linear...")
 
     # pip install scikit-learn
-    # SciKit-Learn é a principal biblioteca de Machine Learning para Python - LinearRegression: É responsável por criar o modelo de regressão linear
+    # SciKit-Learn é a principal biblioteca de Machine Learning para Python - 
+    # LinearRegression: É responsável por criar o modelo de regressão linear
     from sklearn.linear_model import LinearRegression
 
     # Classe para dividir a distribuição dos dados em treino e teste
     from sklearn.model_selection import train_test_split
 
+    # dividir os dados em treino e teste
     # Roubo de veículos (X): Variável independente - Utilizo para prever
     # Recuperação de veículos (Y): Variável dependente - Prevista
+    # Dividir a distribuição dos dados
     X_train, X_test, y_train, y_test = train_test_split(
-                                            array_roubo_veiculo, 
+                                            array_roubo_veiculo,
                                             array_recuperacao_veiculos,
-                                            test_size=0.2, 
-                                            random_state=42 
+                                            test_size=0.2, # tamanho do conjunto de teste, logo o treino terá 0.8
+                                            random_state=42
                                         )
     
     # Importar a classe de normalização
@@ -90,15 +94,25 @@ try:
     scaler = StandardScaler()
 
     # Normalização dos dados de Roubo de Veículos (X)
+    # Usa-se o método fit_transform, para transformar os dados de treino
+    # em um escala de -1 a 1, onde a concentração será em torno de 0
+    # A média no fit_transform tende a ser próxima de zero
+    # Logo todos os dados estarão na mesma escala
     X_train = scaler.fit_transform(X_train.reshape(-1, 1))
 
     # Dados de teste (X_test)
+    # só é necessário replicar a transformação
+    # Então, não se usa o método fit_transform
+    # Aqui, utiliza-se o método transform
     X_test = scaler.transform(X_test.reshape(-1, 1))
 
     # Criar o modelo linear
+    # O modelo é onde encontraremos a função y = ax + b
     modelo = LinearRegression()
 
     # Treinar o modelo com os dados de treino
+    # O resultado desse treino será a função y = ax + b
+    # No momento do treino, utilizam-se as variáveis de treino de X e y
     modelo.fit(X_train, y_train)
 
     # R² Score (R2 score): Coeficiente de determinação
@@ -175,7 +189,8 @@ try:
     # y_teste - y_pred (Ponto de vista é a variável dependente)
     # Avaliar a qualidade do modelo
     # resíduos próximos de zero e aleatórios, 
-
+    # Se os resíduos não forem aleatórios, logo possuem
+    # um padrão, o modeo NÃO é confiável
     residuos = y_test - y_pred
 
     # plotar em gráfico de dispersão

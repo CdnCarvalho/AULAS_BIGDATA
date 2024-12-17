@@ -5,10 +5,11 @@ import polars as pl
 # tem por finalidade trabalhar com dados de volumes maiores
 # Utilizando recursos de multithreading, para paralelizar 
 # o processamento na memória e na cpu (utilizando os núcleos)
-# Quem a faz a gestão da pseudo-distribuição é a biblioteca e não VC!
+# Quem a faz a gestão da pseudo-distribuição é a biblioteca.
 # os dados são armazenados em Dataframes Polars, que tem uma estrutura
 # capaz de otimizar o processamento do dado
 # Para instalar: pip install polars 
+
 
 # Criando uma função customizada
 # para criar uma função customizada, utilize
@@ -30,10 +31,11 @@ def obter_dados(endereco_arquivo, nome_arquivo, tipo_arquivo, separador):
 
         # retornar o resultado, se estiver tudo certo
         return df
-    except Exception as e:
+    except ImportError as e:
         print("Erro ao obter dados - função obter_dados: ", e)
         return None
-    
+
+
 def obter_dados_pd(endereco_arquivo, nome_arquivo, tipo_arquivo, separador):
     # coletar dados do Excel
     try: # Tente executar as ações (dentro do try)
@@ -46,9 +48,10 @@ def obter_dados_pd(endereco_arquivo, nome_arquivo, tipo_arquivo, separador):
 
         # retornar o resultado, se estiver tudo certo
         return df
-    except Exception as e:
+    except ImportError as e:
         print("Erro ao obter dados - função obter_dados: ", e)
         return None
+
 
 # criando uma função para conectar no mysql
 # mysql.connector: Biblioteca para conexão com o mysql
@@ -70,6 +73,6 @@ def obter_dados_mysql(hostname, usuario, senha, banco, query):
         df = pd.read_sql(query, conexao)
 
         return df
-    except Exception as e:
+    except ImportError as e:
         print("Erro ao obter dados do MySQL: ", e)
         return None
