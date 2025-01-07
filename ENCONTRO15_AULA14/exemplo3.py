@@ -20,7 +20,7 @@ try:
     with pl.StringCache():
         # lazzy com delimitação das colunas. 
         # Dessa forma o df_bf continua com todas as colunas da fonte de dados
-        df_bolsa_familia_lazy = df_bolsa_familia.lazy().select(['UF', 'VALOR PARCELA'])
+        df_bolsa_familia_lazy = df_bolsa_familia.lazy().select(['UF','VALOR PARCELA'])
 
         # converter UF para categórico
         df_bolsa_familia_lazy = df_bolsa_familia_lazy.with_columns(
@@ -44,23 +44,3 @@ try:
 except ImportError as e: 
     print(f'Erro ao ler os dados do parquet: {e}')
 
-
-try:
-    print('\nIniciando leitura do arquivo parquet...')
-    inicio = datetime.now()
-
-    df_bolsa_familia = pl.read_parquet(ENDERECO_DADOS + 'bolsa_familia.parquet')
-
-    # Operações diretas sem categorização
-    df_bolsa_familia_lazy = df_bolsa_familia.select(['UF', 'VALOR PARCELA'])
-    df_bolsa_familia_lazy = df_bolsa_familia_lazy.group_by('UF').agg(pl.col('VALOR PARCELA').sum())
-    # df_bolsa_familia = df_bolsa_familia_lazy.collect()
-
-    print(df_bolsa_familia_lazy)
-
-    fim = datetime.now()
-    print(f'Tempo de execução: {fim - inicio}')
-    print('\nArquivo parquet lido com sucesso!')
-
-except ImportError as e: 
-    print(f'Erro ao ler os dados do parquet: {e}')

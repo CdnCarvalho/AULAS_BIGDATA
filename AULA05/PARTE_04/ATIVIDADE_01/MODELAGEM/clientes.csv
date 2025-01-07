@@ -1,0 +1,11 @@
+﻿id_cliente;nome;cpf;tel;email
+1;Ana Paula Silva;123.456.789-01;(11) 91234-5678;ana.silva@email.com
+2;João Carlos Ferreira;234.567.890-12;(21) 99876-5432;joao.ferreira@email.com
+3;Maria Eduarda Souza;345.678.901-23;(31) 91234-5678;maria.souza@email.com
+4;Pedro Henrique Lima;456.789.012-34;(41) 99876-5432;pedro.lima@email.com
+5;Lucas Batista Ramos;567.890.123-45;(51) 91234-5678;lucas.ramos@email.com
+6;Juliana Pereira Melo;678.901.234-56;(61) 99876-5432;juliana.melo@email.com
+7;Fernanda Costa Dias;789.012.345-67;(71) 91234-5678;fernanda.dias@email.com
+8;Carlos Eduardo Rocha;890.123.456-78;(81) 99876-5432;carlos.rocha@email.com
+9;Paula Regina Tavares;901.234.567-89;(91) 91234-5678;paula.tavares@email.com
+10;Tiago Martins Souza;012.345.678-90;(92) 99876-5432;tiago.souza@email.com

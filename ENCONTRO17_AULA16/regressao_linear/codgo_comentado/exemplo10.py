@@ -158,7 +158,7 @@ try:
                                 array_roubo_veiculo_pred.reshape(-1,1)
                                 )
     
-    # prever a recuperação de veículos
+    # Prever a recuperação de veículos
     # método predict
     recup_pred = modelo.predict(array_roubo_veiculo_pred_scaled)
 

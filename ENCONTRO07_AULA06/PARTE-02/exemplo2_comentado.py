@@ -11,7 +11,7 @@ try:
     # utf-8, iso-8859-1, latin1, cp1252
     df_ocorrencias = pd.read_csv(ENDERECO_DADOS, sep=';', encoding='iso-8859-1')
     
-    # demilitando somente as variáveis do Exemplo01: munic e roubo_veiculo
+    # delimitando somente as variáveis: munic e roubo_veiculo
     df_roubo_veiculo = df_ocorrencias[['munic', 'roubo_veiculo']]
 
     # Totalizar roubo_veiculo por munic
@@ -29,7 +29,7 @@ except Exception as e:
 try:
     print('Obtendo informações sobre padrão de roubo de veículos...')
 
-    # array é uma estrutura de dados que armazena uma coleção de dados
+    # Array é uma estrutura de dados que armazena uma coleção de dados
     # e computacionalmente é mais eficiente para calcular estatísticas
     # Faz parte da biblioteca numpy
     array_roubo_veiculo = np.array(df_roubo_veiculo['roubo_veiculo'])
@@ -41,7 +41,7 @@ try:
     # divide a distribuição em duas partes iguais (50% dos dados abaixo e 50% acima)
     mediana_roubo_veiculo = np.median(array_roubo_veiculo)
 
-    # distânicia
+    # Distânicia
     distancia = abs((media_roubo_veiculo-mediana_roubo_veiculo)/mediana_roubo_veiculo)
 
     # Medidas de tendência central
@@ -106,10 +106,10 @@ try:
     print('Máximo: ', maximo)
     
 
-    # filtrar o dataframe df_roubo_veiculo para o munics com roubo de veículo abaixo q1
+    # Filtrar o dataframe df_roubo_veiculo para o munics com roubo de veículo abaixo q1
     df_roubo_veiculo_outliers_inferiores = df_roubo_veiculo[df_roubo_veiculo['roubo_veiculo'] < limite_inferior]
 
-    # filtrar o dataframe df_roubo_veiculo para o munics com roubo de veículo acima q3
+    # Filtrar o dataframe df_roubo_veiculo para o munics com roubo de veículo acima q3
     df_roubo_veiculo_outliers_superiores = df_roubo_veiculo[df_roubo_veiculo['roubo_veiculo'] > limite_superior]
 
     print('\nMunicípios com outliers inferiores: ')

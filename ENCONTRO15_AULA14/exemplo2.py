@@ -45,19 +45,23 @@ try:
     print(df_estado_parcelas)
 
     # Criar a figura com dois subgráficos lado a lado
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+    # fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+
+    plt.subplots(1, 2, figsize=(15, 6))
 
     # Gerar gráfico de barras
-    ax1.bar(df_estado_parcelas['UF'], df_estado_parcelas['TOTAL PARCELA'])
-    ax1.set_xlabel('Estado (UF)', fontsize=12)
-    ax1.set_ylabel('Total das Parcelas', fontsize=12)
-    ax1.set_title('Top 12 Estados com Maior Total de Parcelas', fontsize=14)
-    ax1.set_xticklabels(df_estado_parcelas['UF'], rotation=45, ha='right')
+    plt.subplot(1, 2, 1)
+    plt.bar(df_estado_parcelas['UF'], df_estado_parcelas['TOTAL PARCELA'])
+    plt.xlabel('Estado (UF)', fontsize=12)
+    plt.ylabel('Total das Parcelas', fontsize=12)
+    plt.title('Top 12 Estados com Maior Total de Parcelas', fontsize=14)
+    plt.xticks(df_estado_parcelas['UF'], rotation=45, ha='right')
 
     # Gerar boxplot
+    plt.subplot(1, 2, 2)
     array_valor_parcela = np.array(df_bolsa_familia['VALOR PARCELA'])
-    ax2.boxplot(array_valor_parcela, vert=False)
-    ax2.set_title('Distribuição dos Valores das Parcelas', fontsize=14)
+    plt.boxplot(array_valor_parcela, vert=False)
+    plt.title('Distribuição dos Valores das Parcelas', fontsize=14)
 
     # Ajustar layout
     plt.tight_layout()

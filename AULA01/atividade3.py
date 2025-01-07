@@ -27,4 +27,4 @@ print(df_roupas['Faturamento Total (R$)'].min())
 
 # Menor nível de satisfação
 print("\nProdutos com menores níveis de satisfação:")
-print(df_roupas[df_roupas['Satisfação'] == 'Baixo'])
+print(df_roupas[df_roupas['Satisfação'] == 'Baixo'].count())

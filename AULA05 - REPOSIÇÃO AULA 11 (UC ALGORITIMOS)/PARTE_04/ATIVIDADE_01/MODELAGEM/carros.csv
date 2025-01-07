@@ -1,0 +1,31 @@
+﻿id_carro;marca;modelo;cor;ano
+1;Toyota;Corolla;Branco;2021
+2;Honda;Civic;Prata;2019
+3;Ford;Focus;Preto;2018
+4;Chevrolet;Onix;Vermelho;2020
+5;Renault;Sandero;Azul;2022
+6;Fiat;Argo;Cinza;2021
+7;Hyundai;HB20;Branco;2017
+8;Volkswagen;Gol;Preto;2016
+9;Nissan;Versa;Prata;2021
+10;Peugeot;208;Azul;2020
+11;Citroën;C3;Branco;2019
+12;Kia;Cerato;Preto;2018
+13;Mitsubishi;Lancer;Cinza;2017
+14;BMW;Série 3;Branco;2019
+15;Mercedes;Classe C;Prata;2020
+16;Audi;A4;Preto;2022
+17;Jeep;Compass;Vermelho;2021
+18;Land Rover;Range Rover Evoque;Branco;2020
+19;Chevrolet;Cruze;Azul;2018
+20;Volkswagen;Jetta;Preto;2021
+21;Ford;Ka;Cinza;2019
+22;Renault;Duster;Prata;2018
+23;Hyundai;Tucson;Preto;2020
+24;Toyota;Yaris;Vermelho;2022
+25;Honda;HR-V;Cinza;2019
+26;Nissan;Kicks;Branco;2021
+27;Jeep;Renegade;Azul;2020
+28;Peugeot;3008;Preto;2022
+29;Audi;Q3;Prata;2021
+30;BMW;X1;Cinza;2020

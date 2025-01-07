@@ -1,3 +1,12 @@
+import pandas as pd
+
+# Passo 1: Criando uma série com as quantidades em estoque para diferentes tipos de roupas
+# Definindo os produtos e as quantidades em estoque
+produtos = ['Camiseta', 'Calça', 'Jaqueta', 'Vestido', 'Boné']
+quantidade_estoque = [50, 30, 15, 10, 25]
+
+# Criando a série no Pandas
+estoque_roupas = pd.Series(quantidade_estoque, index=produtos)
 
 # Exibindo a série criada
 print("Estoque inicial de roupas:")

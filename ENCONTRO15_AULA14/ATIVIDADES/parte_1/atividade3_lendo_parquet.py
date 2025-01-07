@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 
-ENDERECO_DADOS = r'./dados/'
+ENDERECO_DADOS = r'../dados/'
 
 # LENDO OS DADOS DO ARQUIVO PARQUET
 try:
@@ -14,7 +14,7 @@ try:
     inicio = datetime.now()
 
     # Exemplo:
-    # df_bolsa_familia = pl.read_parquet(ENDERECO_DADOS + 'bolsa_familia.parquet') 
+    df_bolsa_familia = pl.read_parquet(ENDERECO_DADOS + 'bolsa_familia.parquet') 
     
     # Scan_parquet: Geralment é um método mais rápido que read_parquet,
     # O Scan_parquet gera um plano de execução, para realizar a leitura dos dados.  

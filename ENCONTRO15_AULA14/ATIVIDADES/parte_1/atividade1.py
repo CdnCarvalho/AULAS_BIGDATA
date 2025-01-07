@@ -1,4 +1,4 @@
-import pandas as pd
+# import pandas as pd
 import polars as pl
 from datetime import datetime
 # pip install polars

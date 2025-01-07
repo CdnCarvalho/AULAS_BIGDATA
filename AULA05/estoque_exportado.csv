@@ -1,0 +1,32 @@
+﻿id;Produto;Quantidade;Valor;TotalEstoque
+1;Arroz (5 kg);25;120.0;3000.0
+2;Feijão (1;10;80.0;800.0
+3;Macarrão (50;5;150.0;750.0
+4;Óleo de soja (900 ml);8;70.0;560.0
+5;Açúcar;4;100.0;400.0
+6;Sal (1 kg);2;200.0;400.0
+7;Café (50;12;60.0;720.0
+8;Leite (1 L);5;90.0;450.0
+9;Pão;3;140.0;420.0
+10;Manteiga (200 g);6;50.0;300.0
+11;Queijo (1 kg);35;30.0;1050.0
+12;Presunto (200 g);9;40.0;360.0
+13;Frango (1 kg);15;110.0;1650.0
+14;Batata (1 kg);4;130.0;520.0
+15;Cebola (1 kg);3;150.0;450.0
+16;Tomate (1 kg);6;95.0;570.0
+17;Pepino (1 kg);5;80.0;400.0
+18;Alface (1 unidade);3;75.0;225.0
+19;Macarrão;6;110.0;660.0
+20;Banana (1 kg);4;100.0;400.0
+21;Laranja (1 kg);4;85.0;340.0
+22;Melancia (1 unidade);12;40.0;480.0
+23;Sardinha (1 kg);20;30.0;600.0
+24;Linguiçaa (1;22;25.0;550.0
+25;Biscoito recheado (400 g);5;200.0;1000.0
+26;Chocolate (100 g);4;150.0;600.0
+27;Detergente (500 ml);3;130.0;390.0
+28;Sabão em pó;8;60.0;480.0
+29;Shampoo (400 ml);15;45.0;675.0
+30;Condicionador (400 ml);14;50.0;700.0
+31;Desodorante (100 ml);10;70.0;700.0

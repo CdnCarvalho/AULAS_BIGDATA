@@ -9,15 +9,13 @@ try:
     ENDERECO_DADOS = 'https://www.ispdados.rj.gov.br/Arquivos/BaseDPEvolucaoMensalCisp.csv'
 
     # utf-8, iso-8859-1, latin1, cp1252
-    df_ocorrencias = pd.read_csv(
-        ENDERECO_DADOS, sep=';', encoding='iso-8859-1')
+    df_ocorrencias = pd.read_csv(ENDERECO_DADOS, sep=';', encoding='iso-8859-1')
 
     # Demilitando somente as variáveis munic e roubo_veiculo
     df_roubo_veiculo = df_ocorrencias[['munic', 'roubo_veiculo']]
 
     # Somando roubo_veiculo por município
-    df_roubo_veiculo = df_roubo_veiculo.groupby(
-        ['munic']).sum(['roubo_veiculo']).reset_index()
+    df_roubo_veiculo = df_roubo_veiculo.groupby(['munic']).sum(['roubo_veiculo']).reset_index()
 
     print(df_roubo_veiculo.head())
     print('Dados obtidos com sucesso!')
@@ -104,13 +102,11 @@ try:
 
     # Filtrar o dataframe df_roubo_veiculo para os municípios 
     # com outliers inferiores (valores discrepantes)
-    df_roubo_veiculo_outliers_inferiores = df_roubo_veiculo[
-        df_roubo_veiculo['roubo_veiculo'] < limite_inferior]
+    df_roubo_veiculo_outliers_inferiores = df_roubo_veiculo[df_roubo_veiculo['roubo_veiculo'] < limite_inferior]
 
     # filtrar o dataframe df_roubo_veiculo para os municípios 
     # com outliers superiores (valores discrepantes)
-    df_roubo_veiculo_outliers_superiores = df_roubo_veiculo[
-        df_roubo_veiculo['roubo_veiculo'] > limite_superior]
+    df_roubo_veiculo_outliers_superiores = df_roubo_veiculo[df_roubo_veiculo['roubo_veiculo'] > limite_superior]
 
     # Printando municípios com outliers Inferiores
     print('\nMunicípios com outliers inferiores: ')
@@ -118,16 +114,14 @@ try:
     if len(df_roubo_veiculo_outliers_inferiores) == 0:
         print('Não existem outliers inferiores!')
     else:
-        print(df_roubo_veiculo_outliers_inferiores.sort_values(
-            by='roubo_veiculo', ascending=True))
+        print(df_roubo_veiculo_outliers_inferiores.sort_values(by='roubo_veiculo', ascending=True))
 
     print('\nMunicípios com outliers superiores: ')
     print(30*'-')
     if len(df_roubo_veiculo_outliers_superiores) == 0:
         print('Não existe outliers superiores!')
     else:
-        print(df_roubo_veiculo_outliers_superiores.sort_values(
-            by='roubo_veiculo', ascending=False))
+        print(df_roubo_veiculo_outliers_superiores.sort_values(by='roubo_veiculo', ascending=False))
 
 except ImportError as e:
     print(f'Erro ao obter informações sobre padrão de roubo de veículos: {e}')
@@ -199,8 +193,7 @@ except Exception as e:
     exit()
 
 # Visualizando dados
-try:
- 
+try: 
     # Criar uma figura com 1 linha e 2 colunas para visualização lado a lado
     plt.subplots(1, 2, figsize=(16, 7))  # Tamanho da figura definido em 16x7 polegadas
     # Título principal do gráfico

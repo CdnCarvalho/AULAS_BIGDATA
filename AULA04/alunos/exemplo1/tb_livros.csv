@@ -1,0 +1,37 @@
+id_livro,titulo,autor,id_genero,isbn,valor_emprestimo
+1,Dom Quixote,Miguel de Cervantes,1,9788476000019,10.00
+2,1984,George Orwell,2,9780451524935,12.50
+3,A História das Coisas,Annie Leonard,3,9781451610291,15.00
+4,Crítica da Razão Pura,Immanuel Kant,4,9780140447477,20.00
+5,Steve Jobs,Walter Isaacson,5,9781451648546,18.75
+6,O Futuro da Humanidade,Augusto Cury,6,9788576653848,17.50
+7,O Poder do Hábito,Charles Duhigg,8,9780812981605,14.00
+8,Flores do Mal,Charles Baudelaire,9,9782070422787,11.25
+9,Harry Potter e a Pedra Filosofal,J.K. Rowling,10,9780590353427,25.00
+10,O Pequeno Príncipe,Antoine de Saint-Exupéry,1,9780156012195,9.50
+11,Brave New World,Aldous Huxley,2,9780060850524,13.75
+12,Sapiens,Yuval Noah Harari,3,9780062316097,16.50
+13,Meditations,Marcus Aurelius,4,9780140449334,22.00
+14,Elon Musk,Ashlee Vance,5,9780062301239,21.00
+15,Inteligência Artificial,Kai-Fu Lee,6,9781328546395,19.50
+16,Mindset,Carol S. Dweck,8,9780345472328,18.00
+17,Poemas Completos,Fernando Pessoa,9,9789722510006,10.75
+18,O Senhor dos Anéis,J.R.R. Tolkien,10,9780544003415,23.50
+19,Orgulho e Preconceito,Jane Austen,1,9780486284736,12.75
+20,Fahrenheit 451,Ray Bradbury,2,9781451673319,20.50
+21,Guns, Germs, and Steel,Jared Diamond,3,9780393317558,18.25
+22,A República,Platão,4,9780679600643,21.75
+23,Churchill,Andrew Roberts,5,9781101980996,24.00
+24,A Inovação Que Destrói,Clayton Christensen,6,9780062060240,19.25
+25,Como Fazer Amigos e Influenciar Pessoas,Dale Carnegie,8,9780671027032,11.50
+26,O Corvo e Outros Poemas,Edgar Allan Poe,9,9780451531056,15.50
+27,O Hobbit,J.R.R. Tolkien,10,9780547928227,26.00
+28,Jane Eyre,Charlotte Bronte,1,9780141441146,13.25
+29,Neuromancer,William Gibson,2,9780441569595,14.75
+30,O Dilema da Inovação,Clayton Christensen,6,9780062060240,22.50
+31,A Revolução dos Bichos,George Orwell,2,9780451526342,17.75
+32,Em Busca de Sentido,Viktor E. Frankl,7,9780807014295,16.25
+33,Desperte Seu Herói Interior,M. J. Ryan,8,9780451491463,12.00
+34,A Divina Comédia,Dante Alighieri,9,9780451208634,27.00
+35,Dragões de Éter,Raphael Draccon,10,9788576860765,24.50
+36,O Conde de

@@ -9,6 +9,10 @@ import os
 # obter dados
 try:
     print('Obtendo dados...')
+    # ENDERECO_DADOS = 'https://www.ispdados.rj.gov.br/Arquivos/BaseDPEvolucaoMensalCisp.csv'
+    # # utf-8, iso-8859-1, latin1, cp1252
+    # df_ocorrencias = pd.read_csv(ENDERECO_DADOS, sep=';', encoding='iso-8859-1')
+
     # Carrega variáveis de ambiente do arquivo .env
     load_dotenv()
 
@@ -69,15 +73,11 @@ try:
     distancia_media_mediana = (media-mediana)/mediana
 
     # Medidas de posição
-    # Após a análise, foi percebido que o método weibull não é o mais adequado para este caso.
-    # Estava interferindo na quantidade de outliers para menos.
-    # q1 = np.quantile(array_roubo_coletivo, 0.25, method='weibull')
-    # q3 = np.quantile(array_roubo_coletivo, 0.75, method='weibull')
-    # Calculamos os quartis sem o método weibull
-    # Neste caso, implícitamente estamos usando o método 'linear'
-    q1 = np.quantile(array_roubo_coletivo, 0.25)
-    q3 = np.quantile(array_roubo_coletivo, 0.75)
-
+    # Interfere nos outliers
+    # q1 = np.quantile(array_roubo_coletivo, 0.25)
+    # q3 = np.quantile(array_roubo_coletivo, 0.75)
+    q1 = np.quantile(array_roubo_coletivo, 0.25, method='weibull')
+    q3 = np.quantile(array_roubo_coletivo, 0.75, method='weibull')
     iqr = q3 - q1
     limite_superior = q3 + (1.5 * iqr)
 
@@ -168,28 +168,20 @@ try:
 
     # posição 2: Ranking de Roubos em Coletivos
     plt.subplot(2, 2, 2)
-    # Converter aisp para string nos dois dataframes
+    # Converter aisp para string
     df_total_roubo_coletivo_final['aisp'] = df_total_roubo_coletivo_final['aisp'].astype(str)
-    df_total_roubo_coletivo['aisp'] = df_total_roubo_coletivo['aisp'].astype(str)
+    # Ordenar o dataframe
+    df_total_roubo_coletivo_final = df_total_roubo_coletivo_final.sort_values(by='roubo_em_coletivo', ascending=True)
     
-    if len(df_roubo_coletivo_outliers) <= 1:
-        # Ordenar o dataframe
-        df_total_roubo_coletivo = df_total_roubo_coletivo.sort_values(by='roubo_em_coletivo', ascending=True)
-        # Selecionar os batalhões com mais roubos (ranking entre os maiores valores)
-        df_top = df_total_roubo_coletivo[df_total_roubo_coletivo['roubo_em_coletivo'] >= q3]
-        # plotar o gráfico
-        plt.barh(df_top['aisp'], df_top['roubo_em_coletivo'])
-        plt.xlabel('Roubos em coletivos')
-        plt.ylabel('BPMs')
-        plt.title('Roubos em coletivos por AISP')
-    else:
-        # Ordenar o dataframe
-        df_total_roubo_coletivo_final = df_total_roubo_coletivo_final.sort_values(by='roubo_em_coletivo', ascending=True)
-        # plotar o gráfico
-        plt.barh(df_total_roubo_coletivo_final['aisp'], df_total_roubo_coletivo_final['roubo_em_coletivo'])
-        plt.xlabel('Roubos em coletivos')
-        plt.ylabel('BPMs')
-        plt.title('Roubos em coletivos por AISP')
+    # Selecionar as 15 primeiras AISPs (ranking dos maiores valores)
+    # df_top_15 = df_total_roubo_coletivo_final.head(15)
+    # plt.barh(df_top_15['aisp'], df_top_15['roubo_em_coletivo'])
+
+    # plotar o gráfico
+    plt.barh(df_total_roubo_coletivo_final['aisp'], df_total_roubo_coletivo_final['roubo_em_coletivo'])
+    plt.xlabel('Roubos em Coletivos')
+    plt.ylabel('BPMs')
+    plt.title('Roubos em Coletivos por AISP')
 
     # posição 3: histograma
     plt.subplot(2, 2, 3)

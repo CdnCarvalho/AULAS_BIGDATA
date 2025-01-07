@@ -4,8 +4,6 @@ from datetime import datetime
 import gc  #  Garbage Collector
 # import os
 
-# Pandas Tempo de execução: 0:01:09.272633 - 0:03:40.311191
-# Polars Tempo de execução: 0:00:35.855072 - 0:00:44.743114
 
 ENDERECO_DADOS = r'./dados/'
 
@@ -27,6 +25,7 @@ try:
             lista_arquivos.append(arquivo)
 
     # print(lista_arquivos)
+
     df_bolsa_familia = None
 
     for arquivo in lista_arquivos:

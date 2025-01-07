@@ -1,0 +1,8 @@
+codigo_cliente,nome,sobrenome,endereco,bairro,cidade,telefone,CPF,email
+1,Mariana,Moreira,"Rua dos Lírios, 47",Centro,Curitiba,(21) 91717-9425,628.380.877-57,carlos.silva@example.com
+2,Rafael,Carvalho,"Avenida das Américas, 1020",Jardins,Curitiba,(21) 97628-7334,593.595.365-56,juliana.carvalho@example.com
+3,Rafael,Lima,"Rua dos Lírios, 47",Vila Rica,São Paulo,(21) 96826-6747,472.653.339-96,juliana.lima@example.com
+4,Rafael,Lima,"Rua do Comércio, 345",Ponte Nova,São Paulo,(21) 98008-1720,627.732.329-36,juliana.pereira@example.com
+5,Pedro,Silva,"Rua das Flores, 150",Jardins,Rio de Janeiro,(21) 96316-9005,851.822.170-61,ana.lima@example.com
+6,Carlos,Azevedo,"Avenida das Américas, 1020",Santa Luzia,Rio de Janeiro,(21) 97540-6150,261.466.459-45,carlos.azevedo@example.com
+7,Ana,Moreira,"Avenida Brasil, 1345",Centro,São Paulo,(21) 96492-3250,971.346.901-22,felipe.carvalho@example.com

@@ -1,0 +1,31 @@
+id_usuario,nome,cpf,endereco,bairro,cidade,email,telefone
+1,João Silva,12345678901,Rua das Flores,Centro,São Paulo,joao.silva@email.com,123456789
+2,Maria Oliveira,23456789012,Avenida das Palmeiras,Centro,Rio de Janeiro,maria.oliveira@email.com,987654321
+3,Ana Costa,34567890123,Rua do Sol,Vila Madalena,São Paulo,ana.costa@email.com,456789123
+4,Pedro Sousa,45678901234,Rua das Acácias,Centro,Belo Horizonte,pedro.sousa@email.com,789123456
+5,Lucas Lima,56789012345,Avenida das Nações,Lagoa,Rio de Janeiro,lucas.lima@email.com,321654987
+6,Carla Mendes,67890123456,Rua das Rosas,Boa Viagem,Recife,carla.mendes@email.com,963852741
+7,Tiago Pereira,78901234567,Rua do Cedro,Cidade Baixa,Porto Alegre,tiago.pereira@email.com,147258369
+8,Amanda Santos,89012345678,Avenida do Mar,Centro,Curitiba,amanda.santos@email.com,852963741
+9,Fernanda Silva,90123456789,Rua do Ipê,Centro,Fortaleza,fernanda.silva@email.com,159753486
+10,Bruno Rocha,01234567890,Rua das Oliveiras,Icaraí,Niterói,bruno.rocha@email.com,753159852
+11,Rafael Almeida,12345678901,Avenida dos Girassóis,Jardim Paulista,São Paulo,rafael.almeida@email.com,951753852
+12,Patricia Neves,23456789012,Rua dos Cravos,Vila Mariana,São Paulo,patricia.neves@email.com,852951753
+13,Camila Ferreira,34567890123,Rua das Amendoeiras,Savassi,Belo Horizonte,camila.ferreira@email.com,456123789
+14,Igor Dias,45678901234,Rua das Pedras,Centro,Curitiba,igor.dias@email.com,321789654
+15,Beatriz Teixeira,56789012345,Rua das Magnólias,Lagoa,Rio de Janeiro,beatriz.teixeira@email.com,789456123
+16,Leonardo Souza,67890123456,Rua do Campo,Centro,Florianópolis,leonardo.souza@email.com,147369258
+17,Renata Carvalho,78901234567,Rua da Fonte,Centro,Salvador,renata.carvalho@email.com,963147258
+18,Gustavo Matos,89012345678,Rua do Porto,Centro,Fortaleza,gustavo.matos@email.com,258741369
+19,Priscila Moura,90123456789,Rua do Bosque,Centro,Brasília,priscila.moura@email.com,147852963
+20,Daniel Borges,01234567890,Rua do Horizonte,Centro,São Paulo,daniel.borges@email.com,369258147
+21,Helena Ramos,12345678901,Rua das Hortências,Centro,Porto Alegre,helena.ramos@email.com,258963741
+22,Juliana Araújo,23456789012,Rua das Palmeiras,Centro,Fortaleza,juliana.araujo@email.com,741852963
+23,Felipe Cardoso,34567890123,Rua do Limoeiro,Centro,Recife,felipe.cardoso@email.com,963258741
+24,Clara Farias,45678901234,Rua do Parque,Centro,Rio de Janeiro,clara.farias@email.com,147963258
+25,Marcos Correia,56789012345,Rua das Bromélias,Centro,São Paulo,marcos.correia@email.com,852147963
+26,Raquel Fernandes,67890123456,Rua das Primaveras,Centro,Curitiba,raquel.fernandes@email.com,963741852
+27,Paulo Vieira,78901234567,Rua do Cajueiro,Centro,Belo Horizonte,paulo.vieira@email.com,741963258
+28,Aline Pinto,89012345678,Rua do Pinheiro,Centro,Niterói,aline.pinto@email.com,258963147
+29,Leandro Castro,90123456789,Rua das Pedreiras,Centro,Salvador,leandro.castro@email.com,456258963
+30,Sandra Ribeiro,01234567890,Rua da Paz,Centro,São Paulo,sandra.ribeiro@email.com,789123456

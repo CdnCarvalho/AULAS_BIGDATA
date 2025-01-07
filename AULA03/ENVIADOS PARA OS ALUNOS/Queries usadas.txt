@@ -1,0 +1,29 @@
+QUERIES EXECUTADAS NO WORKBENCH:
+As queries entre /* */ estão comentadas. Enquanto estiverem dentro dos /* */ não serão executadas.
+
+/* 
+SELECT * FROM Vendas;
+
+SELECT Produtos, QuantidadeVendida
+FROM Vendas;
+
+SELECT Produto, Categoria
+FROM Vendas
+WHERE DataVenda > "2024-05-01";
+
+SELECT Produto, Valor
+FROM Vendas
+WHERE Valor > 100;
+
+SELECT Produto, Loja
+FROM Vendas 
+WHERE QuantidadeVendida > 20;
+
+SELECT Produto, Valor, DataVenda
+FROM Vendas 
+WHERE DataVenda >= '2024-07-01' AND DataVenda <= '2024-09-30';
+*/
+
+SELECT Produto, Categoria, DataVenda
+FROM Vendas
+WHERE DataVenda < "2024-05-01" and Categoria = "Móveis";

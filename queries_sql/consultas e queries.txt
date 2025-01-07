@@ -1,0 +1,193 @@
+/*
+SELECT * FROM bd_biblioteca.tb_emprestimo;
+
+ALTER TABLE tb_generos
+MODIFY COLUMN id_genero INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_genero);
+
+ALTER TABLE tb_livros
+MODIFY COLUMN id_livro INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_livro);
+
+ALTER TABLE tb_usuarios
+MODIFY COLUMN id_usuario INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_usuario);
+
+ALTER TABLE tb_emprestimos
+MODIFY COLUMN id_emprestimo INT NOT NULL AUTO_INCREMENT,
+ADD PRIMARY KEY (id_emprestimo);
+
+ALTER TABLE tb_emprestimos
+ADD CONSTRAINT fk_usuario
+FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario);
+
+ALTER TABLE tb_livros
+ADD CONSTRAINT fk_genero
+FOREIGN KEY (id_genero) REFERENCES tb_generos(id_genero);
+
+ALTER TABLE tb_emprestimos
+ADD CONSTRAINT fk_livro
+FOREIGN KEY (id_livro) REFERENCES tb_livros(id_livro);
+
+
+SELECT id_livro 
+FROM tb_emprestimos 
+WHERE id_livro NOT IN (SELECT id_livro FROM tb_livros);
+
+
+SELECT 
+    e.id_emprestimo,
+    e.data_emprestimo,
+    l.titulo,
+    e.id_usuario
+FROM 
+    tb_emprestimos e
+INNER JOIN 
+    tb_livros l ON e.id_livro = l.id_livro;
+    
+
+ALTER TABLE `bd_lojasx`.`tb_pedidos` 
+CHANGE COLUMN `codigo_pedido` `codigo_pedido` INT NOT NULL AUTO_INCREMENT ,
+ADD PRIMARY KEY (`codigo_pedido`);
+;
+
+
+estrangeira exemplo 2
+ALTER TABLE tb_pedidos
+ADD CONSTRAINT fk_pedidos
+FOREIGN KEY (cliente_codigo) REFERENCES tb_clientes(codigo_cliente);
+
+-- apagar chave para dar outro nome a fk -----------------------------
+ALTER TABLE tb_pedidos
+DROP FOREIGN KEY fk_pedidos;
+
+ALTER TABLE tb_pedidos
+ADD CONSTRAINT fk_clientes
+FOREIGN KEY (cliente_codigo) REFERENCES tb_clientes(codigo_cliente);
+-- -------------------------------------------------------------
+
+ALTER TABLE tb_itens
+ADD CONSTRAINT fk_itens
+FOREIGN KEY (item_codigo) REFERENCES tb_produtos(codigo_produto);
+
+
+ALTER TABLE tb_itens
+ADD CONSTRAINT fk_pedidos
+FOREIGN KEY (pedido_codigo) REFERENCES tb_pedidos(codigo_pedido);
+
+
+-- queries
+SELECT *
+FROM tb_pedidos
+WHERE valor > 50.00;
+
+
+SELECT *
+FROM tb_pedidos
+WHERE valor > 60 AND data_pedido < '2024-01-01';
+
+
+SELECT *
+FROM tb_pedidos INNER JOIN tb_clientes ON cliente_codigo = codigo_cliente;
+
+SELECT *
+FROM tb_pedidos INNER JOIN tb_clientes ON tb_pedidos.cliente_codigo = tb_clientes.codigo_cliente
+
+
+SELECT nome, CPF, email, telefone, codigo_pedido
+FROM tb_pedidos INNER JOIN tb_clientes ON cliente_codigo = codigo_cliente
+WHERE codigo_pedido = 17
+*/
+
+SELECT pedido_codigo, nome, email, quantidade, subtotal, item_codigo
+FROM tb_itens INNER JOIN (tb_pedidos INNER JOIN tb_clientes ON cliente_codigo = codigo_cliente) ON pedido_codigo = codigo_pedido
+WHERE codigo_cliente = 2;
+
+
+SELECT 
+    tb_pedidos.codigo_pedido, 
+    tb_clientes.nome, 
+    tb_clientes.email, 
+    tb_itens.quantidade, 
+    tb_itens.subtotal, 
+    tb_itens.item_codigo 
+FROM 
+    (tb_itens 
+    INNER JOIN tb_pedidos ON tb_itens.pedido_codigo = tb_pedidos.codigo_pedido)
+    INNER JOIN tb_clientes ON tb_pedidos.cliente_codigo = tb_clientes.codigo_cliente
+    INNER JOIN tb_produtos ON tb_itens.item_codigo = tb_produtos.codigo_produto
+WHERE 
+    tb_clientes.codigo_cliente = 2;
+
+
+-------------------------------------------------------------------------------------------
+
+
+CREATE TABLE votacao (
+    DT_GERACAO VARCHAR(255),
+    HH_GERACAO VARCHAR(255),
+    ANO_ELEICAO BIGINT,
+    CD_TIPO_ELEICAO BIGINT,
+    NM_TIPO_ELEICAO VARCHAR(255),
+    NR_TURNO BIGINT,
+    CD_ELEICAO BIGINT,
+    DS_ELEICAO VARCHAR(255),
+    DT_ELEICAO VARCHAR(255),
+    TP_ABRANGENCIA VARCHAR(255),
+    SG_UF VARCHAR(255),
+    SG_UE VARCHAR(255),
+    NM_UE VARCHAR(255),
+    CD_MUNICIPIO BIGINT,
+    NM_MUNICIPIO VARCHAR(255),
+    NR_ZONA BIGINT,
+    NR_SECAO BIGINT,
+    CD_CARGO BIGINT,
+    DS_CARGO VARCHAR(255),
+    NR_VOTAVEL BIGINT,
+    NM_VOTAVEL VARCHAR(255),
+    QT_VOTOS BIGINT,
+    NR_LOCAL_VOTACAO BIGINT,
+    SQ_CANDIDATO BIGINT,
+    NM_LOCAL_VOTACAO VARCHAR(255),
+    DS_LOCAL_VOTACAO_ENDERECO VARCHAR(255)
+);
+
+
+
+LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\votacao_secao_2022_BR_2.csv' 
+INTO TABLE votacao 
+FIELDS TERMINATED BY ';' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 ROWS 
+(
+    DT_GERACAO,
+    HH_GERACAO,
+    ANO_ELEICAO,
+    CD_TIPO_ELEICAO,
+    NM_TIPO_ELEICAO,
+    NR_TURNO,
+    CD_ELEICAO,
+    DS_ELEICAO,
+    DT_ELEICAO,
+    TP_ABRANGENCIA,
+    SG_UF,
+    SG_UE,
+    NM_UE,
+    CD_MUNICIPIO,
+    NM_MUNICIPIO,
+    NR_ZONA,
+    NR_SECAO,
+    CD_CARGO,
+    DS_CARGO,
+    NR_VOTAVEL,
+    NM_VOTAVEL,
+    QT_VOTOS,
+    NR_LOCAL_VOTACAO,
+    SQ_CANDIDATO,
+    NM_LOCAL_VOTACAO,
+    DS_LOCAL_VOTACAO_ENDERECO
+);
+
+
+SELECT * FROM bd_votacao.votacao_2022_br;

@@ -45,18 +45,16 @@ try:
     amplitute_total = maximo - minimo
 
     # Identificar outliers superiores e inferiores
-    df_recup_veiculo_outliers_sup = df_recup_veiculo[
-        df_recup_veiculo['recuperacao_veiculos'] > limite_superior]
+    df_recup_veiculo_outliers_sup = df_recup_veiculo[df_recup_veiculo['recuperacao_veiculos'] > limite_superior]
 
-    df_recup_veiculo_outliers_inf = df_recup_veiculo[
-        df_recup_veiculo['recuperacao_veiculos'] < limite_inferior]
+    df_recup_veiculo_outliers_inf = df_recup_veiculo[df_recup_veiculo['recuperacao_veiculos'] < limite_inferior]
 
     # Selecionar as 10 delegacias com valores abaixo de Q1
-    df_recup_veiculo_baixo_q1 = df_recup_veiculo[
-        df_recup_veiculo['recuperacao_veiculos'] < q1]
-    df_recup_veiculo_baixo_q1 = df_recup_veiculo_baixo_q1.sort_values(
-        # Ordena e pega as 10 menores
-        by='recuperacao_veiculos', ascending=True).head(10)
+    df_recup_veiculo_baixo_q1 = df_recup_veiculo[df_recup_veiculo['recuperacao_veiculos'] < q1]
+        
+    # Ordena e pega as 10 menores
+    df_recup_veiculo_baixo_q1 = df_recup_veiculo_baixo_q1.sort_values(by='recuperacao_veiculos', ascending=True).head(10)
+        
 
     # Exibir os gráficos para os outliers
     # Define a área do gráfico com 1 linha e 2 colunas
@@ -65,26 +63,25 @@ try:
     # Gráfico de outliers inferiores (ou as 10 delegacias abaixo de Q1, se não houver outliers)
     if not df_recup_veiculo_outliers_inf.empty:
         # Se há outliers inferiores, exibe-os
-        axes[0].bar(df_recup_veiculo_outliers_inf['cisp'],
-                    df_recup_veiculo_outliers_inf['recuperacao_veiculos'], color='blue')
+        axes[0].bar(df_recup_veiculo_outliers_inf['cisp'], df_recup_veiculo_outliers_inf['recuperacao_veiculos'], color='blue')
     else:
         # Caso não haja outliers, exibe as 10 delegacias com valores abaixo de Q1
-        axes[0].bar(df_recup_veiculo_baixo_q1['cisp'],
-                    df_recup_veiculo_baixo_q1['recuperacao_veiculos'], color='blue')
-    axes[0].set_title(f'Delegacias abaixo {q1} ou Outliers Inferiores')
+        axes[0].bar(df_recup_veiculo_baixo_q1['cisp'], df_recup_veiculo_baixo_q1['recuperacao_veiculos'], color='blue')
+        axes[0].set_title(f'Delegacias abaixo {q1} ou Outliers Inferiores')
+    
     # Remove textos e marcas dos eixos
-    axes[0].tick_params(left=False, bottom=False,
-                        labelleft=False, labelbottom=False)
+    axes[0].tick_params(left=False, bottom=False, labelleft=False, labelbottom=False)
 
     # Gráfico de outliers superiores
-    axes[1].bar(df_recup_veiculo_outliers_sup['cisp'],
-                df_recup_veiculo_outliers_sup['recuperacao_veiculos'], color='red')
-    axes[1].set_title('Outliers Superiores')
+    axes[1].bar(df_recup_veiculo_outliers_sup['cisp'], df_recup_veiculo_outliers_sup['recuperacao_veiculos'], color='red')
+    
     # Remove textos e marcas dos eixos
-    axes[1].tick_params(left=False, bottom=False,
-                        labelleft=False, labelbottom=False)
+    axes[1].set_title('Outliers Superiores')
+    axes[1].tick_params(left=False, bottom=False, labelleft=False, labelbottom=False)
+    
     # Ajuste para evitar sobreposição dos gráficos
     plt.tight_layout()
+    
     # Exibe o gráfico
     plt.show()
 

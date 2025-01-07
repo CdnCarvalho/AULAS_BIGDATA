@@ -1,0 +1,26 @@
+Produto,DataVenda,Categoria,Loja,Valor,QuantidadeVendida
+Televisão LED 55%,2024-10-01,Eletrônicos,SG,2500.0,30
+Smartphone X100,2024-09-20,Eletrônicos,Niterói,1500.0,45
+Laptop Gamer ZT400,2024-09-15,Eletrônicos,Alcântara,4000.0,20
+Console de Videogame YZ,2024-09-05,Eletrônicos,SG,1800.0,25
+Impressora Multifuncional A3,2024-09-22,Periféricos,Niterói,800.0,15
+Teclado Mecânico RGB,2024-08-25,Periféricos,Alcântara,300.0,50
+Mouse Gamer RGB,2024-08-18,Periféricos,SG,150.0,70
+Monitor 27%,2024-07-30,Eletrônicos,Niterói,1200.0,90
+Fone de Ouvido Sem Fio,2024-07-25,Acessórios,Alcântara,600.0,140
+Câmera Digital 24MP,2024-07-20,Fotografia,SG,1500.0,35
+Drone Pro 4K,2024-06-15,Eletrônicos,Niterói,3000.0,10
+Smartwatch S3,2024-05-10,Acessórios,Alcântara,700.0,40
+Ventilador Portátil,2024-06-05,Eletrodomésticos,SG,200.0,110
+Aspirador de Pó Vertical,2024-05-25,Eletrodomésticos,Niterói,400.0,50
+Máquina de Café Automática,2024-04-15,Eletrodomésticos,Alcântara,1000.0,20
+Secadora de Roupas,2024-03-10,Eletrodomésticos,SG,1800.0,25
+Lavadora de Roupas,2024-02-05,Eletrodomésticos,Niterói,2000.0,15
+Refrigerador Inverse,2024-01-22,Eletrodomésticos,Alcântara,3500.0,5
+Fogão 5 Bocas,2024-01-10,Eletrodomésticos,SG,1200.0,30
+Ar Condicionado Split,2024-01-01,Eletrodomésticos,Niterói,2500.0,40
+Máquina de Lavar Louça,2023-12-25,Eletrodomésticos,Alcântara,1600.0,10
+Batedeira Elétrica,2023-12-15,Eletrodomésticos,SG,300.0,60
+Cômoda de Madeira,2023-11-30,Móveis,Niterói,800.0,15
+Sofá 3 lugares,2023-11-10,Móveis,Alcântara,2500.0,8
+Mesa de Jantar 6 lugares,2023-10-01,Móveis,SG,1500.0,20

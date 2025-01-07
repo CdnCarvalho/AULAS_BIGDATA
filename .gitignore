@@ -113,12 +113,10 @@ GitHub.sublime-settings
 *.ppt
 *.pptx
 *.pdf
-*.csv
-
 
 # Diretório de dados
 dados/
 
-
 # Arquivos de Grandes
 *.parquet
+.codegpt

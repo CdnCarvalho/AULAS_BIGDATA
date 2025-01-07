@@ -1,0 +1,12 @@
+Código para dar permissão ao PC p/ acessar o MySQL, caso precise:
+mysql -u root -p
+
+CREATE USER 'root'@'i7' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'i7' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+Ou, alternativamente, você pode usar o caractere curinga '%' para permitir conexões de qualquer host:
+CREATE USER 'root'@'%' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;

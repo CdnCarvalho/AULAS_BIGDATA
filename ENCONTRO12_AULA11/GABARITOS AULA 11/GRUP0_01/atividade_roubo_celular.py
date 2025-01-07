@@ -32,14 +32,14 @@ try:
     df_ocorrencias = pd.merge(df_base, df_roubo_celular, on='cod')
     # print(df_ocorrencias.head())
 
-    # filtrar os anos
+    # filtrar os anos significa que haverá uma quebra de linha
     df_ocorrencias = df_ocorrencias[(df_ocorrencias['ano'] >= 2022) & (df_ocorrencias['ano'] <= 2023)]
     # print(df_ocorrencias.columns)
 
-    # Demilitando somente as variáveis a serem utilizadas
+    # Demilitando somente as variáveis
     df_roubo_celular = df_ocorrencias[['aisp', 'roubo_celular']]
 
-    # Totalizando os roubos de celular por aisp
+    # Totalizar
     df_total_roubo_celular = df_roubo_celular.groupby(['aisp']).sum(['roubo_celular']).reset_index()
 
     print(df_total_roubo_celular.head())
@@ -64,7 +64,7 @@ try:
     q1 = np.quantile(array_roubo_celular, 0.25, method='weibull')
     q3 = np.quantile(array_roubo_celular, 0.75, method='weibull')
     iqr = q3 - q1
-    limite_superior = q3 + (1.5 * iqr)
+    limite_superior = q3 + (1.5*iqr)
 
     # Amplitude
     minimo = np.min(array_roubo_celular)
@@ -145,28 +145,20 @@ try:
 
     # posição 2: Ranking de Roubo de Celular
     plt.subplot(2, 2, 2)
-    # Converter aisp para string o dataframe final e o dataframe 
+    # Converter aisp para string
     df_total_roubo_celular_final['aisp'] = df_total_roubo_celular_final['aisp'].astype(str)
-    df_total_roubo_celular['aisp'] = df_total_roubo_celular['aisp'].astype(str)
     # Ordenar o dataframe
-    if len(df_roubo_celular_outliers) <= 1:
-        # Ordenar o dataframe
-        df_total_roubo_celular = df_total_roubo_celular.sort_values(by='roubo_celular', ascending=True)
-        # Selecionar os batalhões com mais roubos (ranking entre os maiores valores)
-        df_top = df_total_roubo_celular[df_total_roubo_celular['roubo_celular'] >= q3]
-        # plotar o gráfico
-        plt.barh(df_top['aisp'], df_top['roubo_celular'])
-        plt.xlabel('Roubos em celular')
-        plt.ylabel('BPMs')
-        plt.title('Roubos em celular por AISP')
-    else:
-        # Ordenar o dataframe
-        df_total_roubo_celular_final = df_total_roubo_celular_final.sort_values(by='roubo_celular', ascending=True)
-        # plotar o gráfico
-        plt.barh(df_total_roubo_celular_final['aisp'], df_total_roubo_celular_final['roubo_celular'])
-        plt.xlabel('Roubos em celular')
-        plt.ylabel('BPMs')
-        plt.title('Roubos em celular por AISP')
+    df_total_roubo_celular_final = df_total_roubo_celular_final.sort_values(by='roubo_celular', ascending=True)
+    
+    # Selecionar as 15 primeiras AISPs (ranking dos maiores valores)
+    # df_top_15 = df_total_roubo_celular_final.head(15)
+    # plt.barh(df_top_15['aisp'], df_top_15['roubo_celular'])
+
+    # plotar o gráfico
+    plt.barh(df_total_roubo_celular_final['aisp'], df_total_roubo_celular_final['roubo_celular'])
+    plt.xlabel('Roubo de Celular')
+    plt.ylabel('BPMs')
+    plt.title('Roubo de Celular por AISP')
 
     # posição 3: histograma
     plt.subplot(2, 2, 3)
